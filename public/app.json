@@ -7,7 +7,7 @@
         "uuid": "AdapterInteropTest",
         "applicationIcon": "https://openfin.github.io/golden-prototype/favicon.ico",
         "autoShow": false,
-        "providerUrl": "http://localhost:5555/provider.html",
+        "providerUrl": "${APP_ROOT_URL}/provider.html",
         "permissions": {
             "System": {
                 "getAllExternalWindows": true,
@@ -17,7 +17,7 @@
             }
         },
         "defaultWindowOptions": {
-            "url": "http://localhost:5555/platform-window.html",
+            "url": "${APP_ROOT_URL}/platform-window.html",
             "contextMenu": true,
             "defaultWidth": 600,
             "defaultHeight": 600,
@@ -51,7 +51,7 @@
                                     "componentName": "view",
                                     "componentState": {
                                         "processAffinity": "ps_1",
-                                        "url": "http://localhost:5555/platform-view.html",
+                                        "url": "${APP_ROOT_URL}/platform-view.html",
                                         "name": "adapter-testing-view"
                                     }
                                 }

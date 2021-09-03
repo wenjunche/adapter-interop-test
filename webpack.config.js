@@ -1,7 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
-module.exports = {
+module.exports = (env, argv) => {
+
+    const rootUrl = argv.mode === 'development' ? 'http://localhost:5555' : 'https://cdn.openfin.co/test';
+
+    return {
     entry: {
         provider: './src/platform-provider.ts',
         pwindow: './src/platform-window.ts',
@@ -51,6 +56,19 @@ module.exports = {
                 template: 'public/platform-view.html',
                 filename: 'platform-view.html',
                 chunks: ['pview']
-            })
+            }),
+            new CopyPlugin(
+                {
+                    patterns: [
+                        { from: 'public/favicon.ico' },
+                        { from: 'public/app.json',
+                          transform: (content) => {
+                              const json = content.toString();
+                              return json.replace(/\${APP_ROOT_URL}/g, rootUrl);
+                          } }
+                    ]
+                }
+            )
         ]
+    }
 };
