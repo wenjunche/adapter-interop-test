@@ -1,6 +1,4 @@
 export {}
-
-
 fin.Platform.init({
     overrideCallback: async (Provider) => {
         class Override extends Provider {
@@ -38,7 +36,7 @@ fin.Platform.init({
                 else if (intent.name === 'DotNetIntent') {
                     super.setIntentTarget(intent, { uuid: 'donet-integration-test', name: 'donet-integration-test' });
                 } else {
-                    super.setIntentTarget(intent, { uuid: 'AdapterInteropTest', name: 'adapter-view-chart' });  // defined in app.json
+                    super.setIntentTarget(intent, { uuid: 'AdapterInteropTest', name: 'adapter-testing-view' });  // defined in app.json
                 }
             }
         }
