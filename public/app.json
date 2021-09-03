@@ -8,14 +8,6 @@
         "applicationIcon": "https://openfin.github.io/golden-prototype/favicon.ico",
         "autoShow": false,
         "providerUrl": "${APP_ROOT_URL}/provider.html",
-        "permissions": {
-            "System": {
-                "getAllExternalWindows": true,
-                "launchExternalProcess": true,
-                "readRegistryValue": false,
-                "terminateExternalProcess": true
-            }
-        },
         "defaultWindowOptions": {
             "url": "${APP_ROOT_URL}/platform-window.html",
             "contextMenu": true,

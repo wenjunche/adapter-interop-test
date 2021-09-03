@@ -1,10 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');  
 const path = require('path');
 
 module.exports = (env, argv) => {
 
-    const rootUrl = argv.mode === 'development' ? 'http://localhost:5555' : 'https://cdn.openfin.co/test';
+    const rootUrl = argv.mode === 'development' ? 'http://localhost:5555' : 'https://testing-assets.openfin.co/adapters/interop';
 
     return {
     entry: {
@@ -14,7 +15,7 @@ module.exports = (env, argv) => {
     },
     output: {
         path: path.resolve(__dirname, './out'),
-        filename: '[name].js'
+        filename: '[name].[contenthash].js'
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
@@ -39,6 +40,7 @@ module.exports = (env, argv) => {
         ]
     },
     plugins: [
+            new CleanWebpackPlugin(),
             new HtmlWebpackPlugin({ 
                 title: 'Adapter Interop Test provider',
                 template: 'public/provider.html',
