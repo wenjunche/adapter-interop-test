@@ -1,6 +1,19 @@
 # adapter-interop-test
 
-This is a platform app that is used by adapters (Dotnet and Java) to run tests with InterOp.
+This is a platform app that is used by adapters (Dotnet and Java) to run integration tests with InterOp.
+
+### Files
+
+- App Manifest:  public/app.json
+- Platform Provider: public/provider.html, src/platform-provider.ts
+- Platform Window: public/platform-window.html, src/platform-window.ts
+- Platform View: public/platform-view.html, src/platform-view.ts
+
+### Code
+The main logic is in src/platform-view.ts and src/platform-provider.ts
+- Context Handler: when receiving a context, creates a new context, with "1" appended to ticker field and send so adapters can validate the reponse.
+- Intent Handler: Listen to intent name "JsTestIntent".  when receiving an intent, creates a new context, with "1" appended to ticker field and send so adapters can validate the reponse.  Intents from Java and .Net adapters are marked based on context.type.  Both Adapters are listening to "DotNetIntent" and "JavaIntent" respectively.
+- interopOverride: Intent targets are set based on intent.name with UUID of integration tests in Java and .Net adapters.
 
 ### Run locally
 
