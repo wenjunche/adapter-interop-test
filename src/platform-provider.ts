@@ -34,7 +34,7 @@ fin.Platform.init({
                     super.setIntentTarget(intent, { uuid: 'com.openfin.desktop.InteropTest', name: 'com.openfin.desktop.InteropTest' });
                 } 
                 else if (intent.name === 'DotNetIntent') {
-                    super.setIntentTarget(intent, { uuid: 'donet-integration-test', name: 'donet-integration-test' });
+                    super.setIntentTarget(intent, { uuid: 'dotnet-integration-test', name: 'dotnet-integration-test' });
                 } else {
                     super.setIntentTarget(intent, { uuid: 'AdapterInteropTest', name: 'adapter-testing-view' });  // defined in app.json
                 }

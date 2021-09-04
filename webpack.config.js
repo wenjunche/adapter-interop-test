@@ -5,7 +5,10 @@ const path = require('path');
 
 module.exports = (env, argv) => {
 
-    const rootUrl = argv.mode === 'development' ? 'http://localhost:5555' : 'https://testing-assets.openfin.co/adapters/interop';
+    const rootUrl = argv.mode === 'development' ? 
+                        'http://localhost:5555' : 
+                        'http://testing-assets.openfin.co.s3-website-us-east-1.amazonaws.com/adapters/interop';
+                        // should use 'https://testing-assets.openfin.co/adapters/interop' , but old version of .Net does not like https
 
     return {
     entry: {
@@ -71,6 +74,14 @@ module.exports = (env, argv) => {
                     ]
                 }
             )
-        ]
+        ],
+        devServer: {
+            static: [
+                {directory: path.join(__dirname, 'out')},
+            ],
+            port: 5555,
+            hot: 'only'
+        }
+    
     }
 };
