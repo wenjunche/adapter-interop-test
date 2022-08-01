@@ -1,7 +1,7 @@
 {
     "runtime": {
-        "arguments": "--v=1 --inspect",
-        "version": "alpha"
+        "arguments": "--v=1 ",
+        "version": "stable"
     },
     "platform": {
         "uuid": "AdapterInteropTest",
