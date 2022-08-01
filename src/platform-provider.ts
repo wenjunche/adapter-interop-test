@@ -40,7 +40,7 @@ fin.Platform.init({
                     target = { uuid: 'AdapterInteropTest', name: 'adapter-testing-view' };  // defined in app.json
                 }
                 super.setIntentTarget(intent, target);
-                return { source: { name: target.name }, version: '1.0.1', data: { someData: 1234} };
+                return { source: target.name, version: '1.0.1', data: { someData: 1234} };
             }
         }
 
