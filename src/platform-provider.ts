@@ -27,19 +27,40 @@ fin.Platform.init({
         };
         return new Override();
     },
-    interopOverride: async (InteropBroker, provider, options, ...args) => {
+    interopOverride: async (InteropBroker, wire, provider, options, ...args) => {
         class Override extends InteropBroker {
             async handleFiredIntent(intent) {
+                let target: OpenFin.Identity;
                 if (intent.name === 'JavaIntent') {
-                    super.setIntentTarget(intent, { uuid: 'com.openfin.desktop.InteropTest', name: 'com.openfin.desktop.InteropTest' });
+                    target = { uuid: 'com.openfin.desktop.InteropTest', name: 'com.openfin.desktop.InteropTest' };
                 } 
                 else if (intent.name === 'DotNetIntent') {
-                    super.setIntentTarget(intent, { uuid: 'dotnet-integration-test', name: 'dotnet-integration-test' });
+                    target = { uuid: 'dotnet-integration-test', name: 'dotnet-integration-test' };
                 } else {
-                    super.setIntentTarget(intent, { uuid: 'AdapterInteropTest', name: 'adapter-testing-view' });  // defined in app.json
+                    target = { uuid: 'AdapterInteropTest', name: 'adapter-testing-view' };  // defined in app.json
                 }
+                super.setIntentTarget(intent, target);
+                return { source: { name: target.name }, version: '1.0.1' };
             }
         }
-        return new Override(provider, options, ...args);
+
+        // options.contextGroups = [
+        //     {
+        //         id: 'green',
+        //         displayMetadata: {
+        //             color: '#00CC88',
+        //             name: 'green'
+        //         }
+        //     },
+        //     {
+        //         id: 'purple',
+        //         displayMetadata: {
+        //             color: '#8C61FF',
+        //             name: 'purple'
+        //         }
+        //     }
+        // ];
+
+        return new Override(wire, provider, options, ...args);
     }    
 });
